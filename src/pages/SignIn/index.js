@@ -1,50 +1,56 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React from 'react';
+import { Platform } from 'react-native';
 
-import {
-   Background,
-   Container,
-   Logo,
-   AreaInput,
-   Input,
-   SubmitButton,
-   SubmitText,
-   Link,
-   LinkText
-} from "./styles";
+import { 
+  Background, 
+  Container, 
+  Logo, 
+  AreaInput, 
+  Input, 
+  SubmitButton, 
+  SubmitText,
+  Link,
+  LinkText
+} from './styles';
 
-export default function SignIn() {
-  return (
+import { useNavigation } from '@react-navigation/native';
+
+export default function SignIn(){
+  const navigation = useNavigation();
+
+  return(
     <Background>
 
-      <Container>
-
+      <Container
+        behavior={Platform.OS === 'ios' ? 'padding' : ''}
+        enabled
+      >
         <Logo
-        source={require("../../assets/Logo.png")} 
+          source={require('../../assets/Logo.png')}
         />
 
         <AreaInput>
-        <Input
-          placeholder="Seu email"
-        />
+          <Input
+            placeholder="Seu email"
+          />
         </AreaInput>
 
         <AreaInput>
-        <Input
-          placeholder="Sua Senha"
-        />
+          <Input
+            placeholder="Sua senha"
+          />
         </AreaInput>
 
-        <SubmitButton>
+        <SubmitButton activeOpacity={0.8}>
           <SubmitText>Acessar</SubmitText>
         </SubmitButton>
 
-        <Link>
-          <LinkText>Criar uma Conta</LinkText>
+        <Link onPress={ () => navigation.navigate('SignUp') }>
+          <LinkText>Criar uma conta!</LinkText>
         </Link>
 
       </Container>
 
     </Background>
-  );
+  )
 }
