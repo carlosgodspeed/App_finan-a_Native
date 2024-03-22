@@ -12,12 +12,13 @@ import {
 
 import { AuthContext } from '../../contexts/auth';
 
+
 export default function SignUp(){
 
   const { user } = useContext(AuthContext)
 
   function handleSignUp(){
-    alert("TESTE")
+    console.log(user);
   }
 
   return(
