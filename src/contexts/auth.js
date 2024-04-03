@@ -9,9 +9,7 @@ function AuthProvider({ children }){
   const [user, setUser] = useState(null); 
   const [loadingAuth, setLoadingAuth] = useState(false);
   const [loading, setLoading] = useState(true);
-
   const navigation = useNavigation();
-
 
   useEffect(() => {
     async function loadStorage(){
@@ -21,10 +19,10 @@ function AuthProvider({ children }){
 
         const response = await api.get('/me', {
           headers:{
-            'Authorization':`Bearer ${storageUser}`
+            'Authorization': `Bearer ${storageUser}`
           }
         })
-        .catch(() =>{
+        .catch(()=>{
           setUser(null);
         })
 
@@ -53,7 +51,6 @@ function AuthProvider({ children }){
       setLoadingAuth(false);
 
       navigation.goBack();
-
 
     }catch(err){
       console.log("ERRO AO CADASTRAR", err);
@@ -98,11 +95,19 @@ function AuthProvider({ children }){
 
   }
 
+  async function signOut(){
+    await AsyncStorage.clear()
+    .then(() => {
+      setUser(null);
+    })
+  }
+
   return(
-    <AuthContext.Provider value={{ signed: !!user, user, signUp, signIn, loadingAuth, loading }}>
+    <AuthContext.Provider value={{ signed: !!user, user, signUp, signIn, signOut, loadingAuth, loading }}>
       {children}
     </AuthContext.Provider>
   )
 }
 
 export default AuthProvider;
+
