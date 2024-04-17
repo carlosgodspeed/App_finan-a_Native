@@ -1,21 +1,33 @@
-import React from "react";
-import { Container, TipoText, Tipo, IconView, ValorText } from "./styles";
+import React from 'react';
+import {
+  Container, 
+  TipoText,
+  Tipo,
+  IconView,
+  ValorText
+} from './styles';
 
-import Icon from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/Feather'
 
-export default function HistoricoList() {
-  return (
+export default function HistoricoList({ data }){
+  return(
     <Container>
+      
       <Tipo>
-        <IconView>
-            <Icon name="arrow-down" size={20} color="#FFF" />
-            <TipoText>Receita</TipoText>
+        <IconView tipo={data.type}>
+          <Icon 
+            name={data.type === 'despesa' ? 'arrow-down' : 'arrow-up'}
+            size={20} 
+            color="#FFF" 
+          />
+          <TipoText>{data.type}</TipoText>
         </IconView>
       </Tipo>
 
       <ValorText>
-        R$ 1200
+        R$ {data.value}
       </ValorText>
+
     </Container>
-  );
+  )
 }

@@ -14,19 +14,23 @@ export const Tipo = styled.View`
 `;
 
 export const TipoText = styled.Text`
-  color: #FFF;
-  font-size: 16px;
-  font-style: italic;
+color: #FFF;
+font-size: 16px;
+font-style: italic;
 `;
 
 export const IconView = styled.View`
   flex-direction: row;
-  background-color: #c62c36;
+  background-color: ${props => props.tipo === 'despesa' ? '#c62c36' : '#049301'};
   padding-bottom: 4px;
   padding-top: 4px;
   padding-left: 8px;
   padding-right: 8px;
+  border-radius: 4px;
+  margin-bottom: 2px;
 `;
 
-
-export const ValorText = styled.Text``;
+export const ValorText = styled.Text`
+  color: #121212;
+  font-size: 22px;
+`;
