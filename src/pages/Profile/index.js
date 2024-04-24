@@ -1,25 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, Message, Name, NewLink, NewText, LogoutButton, LogoutText } from './styles';
 import Header from '../../components/Header';
+import { AuthContext } from '../../contexts/auth';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Profile(){
+  const { user, signOut } = useContext(AuthContext);
+  const navigation = useNavigation();
+
   return(
     <Container>
       <Header title="Perfil" />
 
       <Message>
-        Welcome back brasil
+        Organize Seu Financeiro
       </Message>
 
       <Name numberOflines={1}>
-        Nome usuario
+        {user && user.name}
       </Name>
 
-      <NewLink>
+      <NewLink onPress={ () => navigation.navigate('Registrar')}>
         <NewText>Fazer Registro</NewText>
       </NewLink>
 
-      <LogoutButton>
+      <LogoutButton onPress={ () => signOut() }>
         <LogoutText>Sair</LogoutText>
       </LogoutButton>
     </Container>
