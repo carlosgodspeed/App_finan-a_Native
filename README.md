@@ -21,6 +21,10 @@ Os usuários podem registrar uma despesa especificando uma descrição, categori
 Adicionar Receita (Lucro):
 Os usuários podem adicionar uma entrada de receita especificando uma descrição, categoria e valor. Essas receitas também são salvas no banco de dados e associadas ao usuário logado.
 
+Filtro de Pesquisa :
+
+Usuario podera filtrar a partir da data a receita que deseja verificar 
+
 
 
 
